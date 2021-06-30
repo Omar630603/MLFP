@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 from keras.models import load_model 
 from keras.backend import set_session
+from keras.layers import LayerNormalization
 from skimage.transform import resize 
 import matplotlib.pyplot as plt 
 import tensorflow.compat.v1 as tf
@@ -18,7 +19,6 @@ import numpy as np
 
 print("Loading model") 
 global sess
-
 global model 
 model = load_model('my_cifar10_model.h5') 
 global graph
@@ -42,9 +42,9 @@ def prediction(filename):
     
     #Step 3
     with graph.as_default():
-      sess = tf.Session()
+      sess = tf.Session() 
       set_session(sess)
-      model = load_model('my_cifar10_model.h5') 
+      model = load_model('my_cifar10_model.h5')
       probabilities = model.predict(np.array( [my_image_re,] ))[0,:]
       print(probabilities)
       #Step 4
