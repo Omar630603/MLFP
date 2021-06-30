@@ -4,23 +4,25 @@ from werkzeug.utils import secure_filename
 
 
 app = Flask(__name__)
-app.run(debug=True)
+# if __name__=='__main__':
+#   app.debug=True
+#   app.run()
 
 from keras.models import load_model 
 from keras.backend import set_session
 from skimage.transform import resize 
 import matplotlib.pyplot as plt 
-import tensorflow as tf 
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()  
 import numpy as np 
 
 print("Loading model") 
 global sess
-sess = tf.compat.v1.Session()
-set_session(sess)
+
 global model 
 model = load_model('my_cifar10_model.h5') 
 global graph
-graph = tf.compat.v1.get_default_graph()
+graph = tf.get_default_graph()
 
 @app.route('/', methods=['GET', 'POST']) 
 def main_page():
@@ -40,7 +42,9 @@ def prediction(filename):
     
     #Step 3
     with graph.as_default():
+      sess = tf.Session()
       set_session(sess)
+      model = load_model('my_cifar10_model.h5') 
       probabilities = model.predict(np.array( [my_image_re,] ))[0,:]
       print(probabilities)
       #Step 4
@@ -57,4 +61,4 @@ def prediction(filename):
     #Step 5
     return render_template('predict.html', predictions=predictions)
 
-app.run(host='127.0.0.1:8000', port=8000)
+app.run(host='0.0.0.0', port=80)

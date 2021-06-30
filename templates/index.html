@@ -1,14 +1,73 @@
-<!doctype html> <html> <head>
-    <title>Classify your Image!</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> </head> <body style="background-color:black"> <div id="maintext" 
-style="position:absolute; margin:auto; width:700px; height:200px; text-align:center; top:0; bottom: 0; left: 0; right: 0;">
-  <h1 class="text-light mb-2"> Upload your image to be classified! </h1>
-  <h4 class="text-light mb-5">(Please upload images less than 500kb in size)</h4>
-  <form method=post enctype=multipart/form-data>
-     <p class="text-light">
-        <input type=file name=file>
-        <input type=submit value=Upload>
-     </p>
-  </form> </div> </body>
+<!doctype html> 
+<html> 
+   <head>
+      <title>Classify your Image!</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      
+      <style>
+         body{ 
+            background-image: linear-gradient(to bottom right, #b3feff, #b3fff5);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+         }
+
+      </style>
+   </head> 
+   <body> 
+      
+      <div id="maintext" style="position:relative; margin: 150px auto 400px auto; width:700px; height:200px; text-align:center; top:0; bottom: 0; left: 0; right: 0;">
+         <h1 class="text-dark mb-2"> Welcome To APLOD! </h1>
+         <h4>Image Classification Prediction With Deep Learning</h4> <br><br><br>
+         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style=" background-color: darkorchid;color: white;">
+            How To Do
+         </button>
+         <br><br>
+         <center>
+            <form method=post enctype=multipart/form-data>
+               <p class="text-dark" style="display: flex; align-items: center; justify-content: center;">
+                  <input type=file name=file>
+                  <input type=submit value=Upload class="btn">
+               </p>
+            </form> 
+         </center>
+
+         <!-- Modal -->
+         <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">How To Do The Image Classification</h4>
+                </div>
+                <div class="modal-body text-left">
+                  <p>You can upload photo in this list :</p>
+                  <ul>
+                     <li>airplane</li>
+                     <li>automobile</li>
+                     <li>cat</li>
+                     <li>bird</li>
+                     <li>deer</li>
+                     <li>dog</li>
+                     <li>frog</li>
+                     <li>horse</li>
+                     <li>ship</li>
+                     <li>truck</li>
+                  </ul>
+                  <p>We will show you the prediction of the photo you upload. <b> Make sure your photo's size is below 500KB </b></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+      </div> 
+      
+ 
+      
+   </body>
 </html>
