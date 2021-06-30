@@ -4,6 +4,8 @@ from werkzeug.utils import secure_filename
 
 
 app = Flask(__name__)
+UPLOAD_FOLDER = 'static/uploads/'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # if __name__=='__main__':
 #   app.debug=True
 #   app.run()
@@ -29,14 +31,14 @@ def main_page():
     if request.method == 'POST':
         file = request.files['file']
         filename = secure_filename(file.filename)
-        file.save(os.path.join('uploads', filename))
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         return redirect(url_for('prediction', filename=filename))
     return render_template('index.html')
 
 @app.route('/prediction/<filename>') 
 def prediction(filename):
     #Step 1
-    my_image = plt.imread(os.path.join('uploads', filename))
+    my_image = plt.imread(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     #Step 2
     my_image_re = resize(my_image, (32,32,3))
     
@@ -59,6 +61,9 @@ def prediction(filename):
         "prob3":probabilities[index[7]],
       }
     #Step 5
-    return render_template('predict.html', predictions=predictions)
-
+    return render_template('predict.html', predictions=predictions, filename=filename)
+    
+@app.route('/display/<filename>')
+def display_image(filename):
+    return redirect(url_for('static', filename='uploads/' + filename), code=301)
 app.run(host='0.0.0.0', port=80)

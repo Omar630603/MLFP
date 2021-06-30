@@ -2,49 +2,66 @@
 <html> 
   <head>
     <title>Your Prediction!</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
     <style>
         body{ 
-          background-image: linear-gradient(to bottom right, #b3feff, #b3fff5);
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
-        }
+            background-image: linear-gradient(to bottom right, #b3feff, #b3fff5);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+         }
 
         th{
-          background-color: darkgray;
+          background-color: rgba(169, 169, 169, 0.39);
           text-align: center;
         }
 
         td{
-          background-color: darkseagreen;
+          background-color: rgba(0, 0, 139, 0.445);
         }
+        .image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        object-position: center;
+      }
     </style>
   </head> 
-  <body> <div id="maintext" style="position:absolute; margin:auto; width:700px; height:300px; text-align:center; top:0; bottom: 0; left: 0; right: 0;">
-      <h1 class="text-light mb-5"> The Prediction </h1>
-      <h3 class="text-light mb-5"> Most Likely: {{ predictions.class1 }}</h3>
-      <p class="text-light"> 3 Top Rank Prediction: </p>
-      <table class="table table-dark text-light" style="width:100%">
-      <tr>
-        <th>Rank</th>
-        <th>Class</th>
-        <th>Probability</th>
-      </tr>
-      <tr>
-        <td>Most Likely:</td>
-        <td>{{ predictions.class1 }}</td>
-        <td>{{ predictions.prob1 }}</td>
-      </tr>
-      <tr>
-        <td>2nd Most Likely:</td>
-        <td>{{ predictions.class2 }}</td> <td>{{ predictions.prob2 }}</td> </tr> <tr>
-        <td>3rd Most Likely:</td>
-        <td>{{ predictions.class3 }}</td>
-        <td>{{ predictions.prob3 }}</td>
-      </tr>
-      </table> <a href="{{ url_for('main_page') }}"><button class="btn btn-primary mt-3">Try again?</button></a>
+  <body> 
+    <div id="maintext" style="position:absolute; margin:auto; width:70%; text-align:center; top:0; bottom: 0; left: 0; right: 0;">
+      <h1 class="text-dark" style="margin-bottom: 5px;"> The Prediction For Your Photo</h1>
+      <img class="image" style="margin-bottom: 15px;" src="{{ url_for('display_image', filename=filename) }}" align="middle">
+      <a href="{{ url_for('main_page') }}" class="btn btn-outline-dark float-right mt-3">Try again</a>
+      <div style="text-align: left;">
+        <h3 class="text-dark"> Most Likely: {{ predictions.class1 }}</h3>
+        <p class="text-dark" style="margin-bottom: 15px;"> 3 Top Ranked Predictions: </p>
+      </div>
+      <table class="table" style="width:100%; margin-bottom: 0;">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Class</th>
+            <th>Probability</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1st Most Likely:</td>
+            <td>{{ predictions.class1 }}</td>
+            <td>{{ predictions.prob1 }}</td>
+          </tr>
+          <tr>
+            <td>2nd Most Likely:</td>
+            <td>{{ predictions.class2 }}</td> <td>{{ predictions.prob2 }}</td> 
+          </tr> 
+          <tr>
+            <td>3rd Most Likely:</td>
+            <td>{{ predictions.class3 }}</td>
+            <td>{{ predictions.prob3 }}</td>
+          </tr>
+        </tbody>
+      </table> 
     </div>
   </body>
 </html>
