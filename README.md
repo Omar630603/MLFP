@@ -31,9 +31,14 @@ Information Tecnology
 Machine Learning
 Group 3
 ******************************************
-Aisyah Chalvina Izumi Firdaus	:	1941720090
-Fikkie Akbar Hidayat		      :	1941720079
-Meuti Zari Annisa		          :	1941720088
-Omar Al-Maktary		            :	1941720237 
-Rivaldo Ferby Aquarel        	:	1941720089
+Aisyah Chalvina Izumi Firdaus		:1941720090
+
+Fikkie Akbar Hidayat		        :1941720079
+
+Meuti Zari Annisa		        :1941720088
+
+Omar Abdul-Raoof Taha Ghaleb Al-Maktary	:1941720237 
+
+Rivaldo Ferby Aquarel        		:1941720089
+
 ******************************************
