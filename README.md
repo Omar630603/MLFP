@@ -20,7 +20,9 @@ Machine Learning Final Project Image Detection &amp;  Classification
 - Type this command to start running the application
 
 	flask run
+	
 ***END***
+
 NOTE(For other operating systems, please check Flask's documentation on https://flask.palletsprojects.com/en/2.0.x/)
 
 ******************************************
